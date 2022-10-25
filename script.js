@@ -16,11 +16,14 @@ sizeCanvas.addEventListener('input', () => {
 let firstIteration = true
 
 if (firstIteration) {
-  createPixel(sizeCanvas.value)
+  createPixel(sizeCanvas.value);
+  createGrid(sizeCanvas.value);
 }
 
 //Pass number to the grid canvas
-
+function createGrid(size) {
+  canvas.setAttribute('style',`grid-template: repeat(${size},1fr)/repeat(${size},1fr)`);
+}
 
 //remove all children of the canvas
 
