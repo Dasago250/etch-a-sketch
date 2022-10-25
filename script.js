@@ -1,4 +1,4 @@
-let canvas = document.querySelector('.canvas')
+const canvas = document.querySelector('.canvas')
 
 //Receive input for the size of the canvas
 let sizeCanvas = document.querySelector('#sizeCanvas');
@@ -36,6 +36,17 @@ function createPixel(size,parent) {
   let numberPixels = Math.pow(size,2);
   for (let i = 0; i < numberPixels; i++) {
     let pixel = document.createElement('div');
+    pixel.setAttribute('class', 'pixel');
     canvas.appendChild(pixel);
   }
 }
+
+
+//Change background color pixel
+const pixels  = document.querySelectorAll('.pixel');
+
+pixels.forEach(pixel =>{
+  pixel.addEventListener('mouseenter',() =>{
+    pixel.style.backgroundColor = '#000'
+  })
+})
