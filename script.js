@@ -6,10 +6,10 @@ sizeCanvas.addEventListener('input', () => {
   firstIteration = false;
   if (sizeCanvas.value < 1 || sizeCanvas.value > 64) {
     sizeCanvas.value = 32;
-    console.log(sizeCanvas.value);
-  }else{
-    console.log(sizeCanvas.value);
   }
+  createGrid(sizeCanvas.value);
+  removePixels();
+  createPixel(sizeCanvas.value);
 });
 
 //First iteration
@@ -23,14 +23,18 @@ if (firstIteration) {
 //Pass number to the grid canvas
 function createGrid(size) {
   canvas.setAttribute('style',`grid-template: repeat(${size},1fr)/repeat(${size},1fr)`);
-}
+}             
 
 //remove all children of the canvas
-
+function removePixels() {
+  while (canvas.firstChild) {
+    canvas.removeChild(canvas.firstChild);
+  }
+}
 //Create div, total the number given
-function createPixel(size) {
+function createPixel(size,parent) {
   let numberPixels = Math.pow(size,2);
-  for (let i = 1; i < numberPixels; i++) {
+  for (let i = 0; i < numberPixels; i++) {
     let pixel = document.createElement('div');
     canvas.appendChild(pixel);
   }
