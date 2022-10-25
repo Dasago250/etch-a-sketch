@@ -1,7 +1,20 @@
 const canvas = document.querySelector('.canvas')
+//Input number
+const sizeCanvas = document.querySelector('#sizeCanvas');
+//Color selection
+const colorSelector = document.querySelector('#color');
+
+//First iteration
+let firstIteration = true
+
+if (firstIteration) {
+  createPixel(sizeCanvas.value);
+  createGrid(sizeCanvas.value);
+  changeColor();   
+}
+
 
 //Receive input for the size of the canvas
-let sizeCanvas = document.querySelector('#sizeCanvas');
 sizeCanvas.addEventListener('input', () => {
   firstIteration = false;
   if (sizeCanvas.value < 1 || sizeCanvas.value > 64) {
@@ -10,15 +23,9 @@ sizeCanvas.addEventListener('input', () => {
   createGrid(sizeCanvas.value);
   removePixels();
   createPixel(sizeCanvas.value);
+  changeColor();   
 });
 
-//First iteration
-let firstIteration = true
-
-if (firstIteration) {
-  createPixel(sizeCanvas.value);
-  createGrid(sizeCanvas.value);
-}
 
 //Pass number to the grid canvas
 function createGrid(size) {
@@ -32,7 +39,7 @@ function removePixels() {
   }
 }
 //Create div, total the number given
-function createPixel(size,parent) {
+function createPixel(size) {
   let numberPixels = Math.pow(size,2);
   for (let i = 0; i < numberPixels; i++) {
     let pixel = document.createElement('div');
@@ -41,12 +48,13 @@ function createPixel(size,parent) {
   }
 }
 
-
 //Change background color pixel
-const pixels  = document.querySelectorAll('.pixel');
+function changeColor() {
+  const pixels  = document.querySelectorAll('.pixel');
 
-pixels.forEach(pixel =>{
-  pixel.addEventListener('mouseenter',() =>{
-    pixel.style.backgroundColor = '#000'
+  pixels.forEach(pixel =>{
+    pixel.addEventListener('mouseenter',() =>{
+      pixel.style.backgroundColor = colorSelector.value;
+    })
   })
-})
+}
