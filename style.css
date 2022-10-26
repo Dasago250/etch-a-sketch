@@ -1,3 +1,9 @@
+@font-face {
+  font-family: 'Signika Negative';
+  src: url(./Fonts/SignikaNegative-Medium.ttf);
+  font-style: normal;
+  font-weight: normal;
+}
 *{
   box-sizing: border-box;
 }
@@ -7,15 +13,19 @@ body{
   flex-direction: column;
   margin: 0;
   height: 100vh;
+  background-color: #FFC857;
+  font-family:'Signika Negative';
 }
 
 header{
   display: flex;
   justify-content: center;
   text-align: center;
+  background-color: #323031;
+  color: #FFC857;
 }
 
-
+/*-----Main-----*/
 main{
   flex: auto;
   display: flex;
@@ -25,10 +35,11 @@ main{
 
 main .base{
   display: flex;
-  background-color: red;
+  background-color: #DB3A34;
   align-items: center;
   padding: 30px;
   gap: 20px;
+  border-radius: 20px;
 }
 
 main .base .input{
@@ -38,7 +49,45 @@ main .base .input{
   padding: 15px;
   align-items: center;
   justify-content: space-evenly;
-  background-color: whitesmoke;
+  background-color: #323031;
+  border-radius: 10px;
+}
+main .base .input #sizeCanvas{
+  text-align: center;
+  align-self: stretch;
+  background-color: #FFC857;
+  border-radius: 5px;
+}
+main .base .input #color{
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 100px;
+  height: 100px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+main .base .input #color::-webkit-color-swatch{
+  border-radius: 15px;
+  border: none;
+}
+main .base .input #color::-moz-color-swatch{
+  border-radius: 15px;
+  border: none;
+}
+main .base .input button{
+  height: 70px;
+  width: 70px;
+  border-radius: 50%;
+  background-color: #177E89;
+  color: #FFC857;
+  border: none;
+  font-weight: bolder;
+}
+
+main .base .input button:hover{
+  background-color: #084C61;
 }
 /*-----Canvas-----*/
 main .base .canvas{
@@ -48,16 +97,15 @@ main .base .canvas{
   border: 1px solid #000;
 }
 
-main .base .canvas .pixel{
-  border: 1px solid #000;
-}
-
+/*-----Footer-----*/
 footer{
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #323031;
 }
 footer p a{
   text-decoration: none;
   font-size: 18px;
+  color: #FFC857;
 }
